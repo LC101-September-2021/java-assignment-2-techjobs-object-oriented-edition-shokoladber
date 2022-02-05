@@ -17,12 +17,18 @@ public class JobTest {
     Job test_job1;
     Job test_job1_sameExceptId;
     Job test_job2;
+    Job emptyJob;
+//    Employer emptyEmployer = new Employer("");
+//    Location emptyLocation = new Location("");
+//    PositionType emptyPositionType = new PositionType("");
+//    CoreCompetency emptyCoreCompetency = new CoreCompetency("");
 
     @Before
     public void createJobObject(){
         test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        test_job1_sameExceptId = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         test_job2 = new Job("Web Developer", new Employer("LaunchCode"), new Location("St. Louis"), new PositionType("Front-end developer"), new CoreCompetency("JavaScript"));
+        test_job1_sameExceptId = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        emptyJob = new Job( "", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
     }
 
     @Test
@@ -61,9 +67,32 @@ public class JobTest {
         assertFalse(test_job1 == test_job1_sameExceptId);
     }
 
+    @Before
+    public void testJobToString(){
+        emptyJob.toString();
+    }
+
     @Test
     public void testToString(){
+        String expected = "\n" +
+                "ID: " + test_job1.getId() + "\n" +
+                "Name: " + test_job1.getName() + "\n" +
+                "Employer: " + test_job1.getEmployer().getValue() + "\n" +
+                "Location: " + test_job1.getLocation().getValue() + "\n" +
+                "Position Type: " + test_job1.getPositionType().getValue() + "\n" +
+                "Core Competency: " + test_job1.getCoreCompetency().getValue() + "\n" +
+                "\n";
+        assertEquals(expected, test_job1.toString());
 
+        //these test if empty job field returns "Data not available"
+        assertEquals("Data not available", emptyJob.getName());
+        assertEquals("Data not available", emptyJob.getEmployer().getValue());
+        assertEquals("Data not available", emptyJob.getLocation().getValue());
+        assertEquals("Data not available", emptyJob.getPositionType().getValue());
+        assertEquals("Data not available", emptyJob.getCoreCompetency().getValue());
+
+//        //this tests if empty job returns "Oops! This job does not seem to exist."
+        assertTrue(emptyJob.toString() == "Oops! This job does not seem to exist.");
     }
 
 }
