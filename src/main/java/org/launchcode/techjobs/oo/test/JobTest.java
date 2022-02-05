@@ -18,10 +18,6 @@ public class JobTest {
     Job test_job1_sameExceptId;
     Job test_job2;
     Job emptyJob;
-//    Employer emptyEmployer = new Employer("");
-//    Location emptyLocation = new Location("");
-//    PositionType emptyPositionType = new PositionType("");
-//    CoreCompetency emptyCoreCompetency = new CoreCompetency("");
 
     @Before
     public void createJobObject(){
@@ -91,7 +87,7 @@ public class JobTest {
         assertEquals("Data not available", emptyJob.getPositionType().getValue());
         assertEquals("Data not available", emptyJob.getCoreCompetency().getValue());
 
-//        //this tests if empty job returns "Oops! This job does not seem to exist."
+        //this tests if empty job returns "Oops! This job does not seem to exist."
         assertTrue(emptyJob.toString() == "Oops! This job does not seem to exist.");
     }
 
