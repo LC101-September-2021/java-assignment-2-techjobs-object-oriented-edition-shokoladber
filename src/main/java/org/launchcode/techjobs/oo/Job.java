@@ -126,7 +126,7 @@ public class Job {
         }
 
         thisString ="\n" +
-                "ID: " + id + "\n" +
+                "ID: " + this.id + "\n" +
                 "Name: " + this.name + "\n" +
                 "Employer: " + this.employer.getValue() + "\n" +
                 "Location: " + this.location.getValue() + "\n" +

@@ -50,7 +50,7 @@ public class JobTest {
         assertTrue(test_job1.getLocation().getValue() == "Desert");
         assertTrue(test_job1.getPositionType().getValue() == "Quality control");
 
-        //these test the class of each ojbect passed into constructor
+        //these test the class of each object passed into constructor
         assertTrue(test_job1.getCoreCompetency() instanceof CoreCompetency);
         assertTrue(test_job1.getEmployer() instanceof Employer);
         assertTrue(test_job1.getLocation() instanceof Location);
@@ -64,7 +64,7 @@ public class JobTest {
     }
 
     @Before
-    public void testJobToString(){
+    public void testJobtoString(){
         emptyJob.toString();
     }
 
