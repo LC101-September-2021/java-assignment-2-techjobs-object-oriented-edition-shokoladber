@@ -6,6 +6,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
 
+import java.lang.instrument.Instrumentation;
+
 import static org.junit.Assert.*;
 
 /**
@@ -60,12 +62,48 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality(){
-        assertFalse(test_job1 == test_job1_sameExceptId);
+        assertFalse(test_job1.equals(test_job1_sameExceptId));
     }
 
     @Before
-    public void testJobtoString(){
+    public void testJobToString(){
         emptyJob.toString();
+    }
+
+    @Test
+    public void testToStringStartsWithNewLine(){
+        assertTrue(test_job1.toString().startsWith("\n"));
+    }
+
+    @Test
+    public void testToStringEndWithNewLine(){
+        assertTrue(test_job1.toString().endsWith("\n"));
+    }
+
+    @Test
+    public void testToStringHasNewLineForEveryField(){
+        String[] lines = test_job1.toString().split("\n");
+        assertEquals(lines.length, 7);
+    }
+
+    //ToDO
+//    @Test
+//    public void testToStringCreatesLabelAndDataForFields(){
+//        //createTestHere
+//    }
+
+    @Test
+    public void testToStringFieldsReturnDataNotAvailable(){
+        assertEquals("Data not available", emptyJob.getName());
+        assertEquals("Data not available", emptyJob.getEmployer().getValue());
+        assertEquals("Data not available", emptyJob.getLocation().getValue());
+        assertEquals("Data not available", emptyJob.getPositionType().getValue());
+        assertEquals("Data not available", emptyJob.getCoreCompetency().getValue());
+    }
+
+    @Test
+    public void testToStringReturnsJobDoesNotExist(){
+        assertTrue(emptyJob.toString() == "Oops! This job does not seem to exist.");
     }
 
     @Test
@@ -76,19 +114,8 @@ public class JobTest {
                 "Employer: " + test_job1.getEmployer().getValue() + "\n" +
                 "Location: " + test_job1.getLocation().getValue() + "\n" +
                 "Position Type: " + test_job1.getPositionType().getValue() + "\n" +
-                "Core Competency: " + test_job1.getCoreCompetency().getValue() + "\n" +
-                "\n";
+                "Core Competency: " + test_job1.getCoreCompetency().getValue() + "\n";
         assertEquals(expected, test_job1.toString());
-
-        //these test if empty job field returns "Data not available"
-        assertEquals("Data not available", emptyJob.getName());
-        assertEquals("Data not available", emptyJob.getEmployer().getValue());
-        assertEquals("Data not available", emptyJob.getLocation().getValue());
-        assertEquals("Data not available", emptyJob.getPositionType().getValue());
-        assertEquals("Data not available", emptyJob.getCoreCompetency().getValue());
-
-        //this tests if empty job returns "Oops! This job does not seem to exist."
-        assertTrue(emptyJob.toString() == "Oops! This job does not seem to exist.");
     }
 
 }

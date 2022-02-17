@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.oo;
 
+import org.junit.Test;
+
 import java.util.Objects;
 
 public class Job {
@@ -131,8 +133,7 @@ public class Job {
                 "Employer: " + this.employer.getValue() + "\n" +
                 "Location: " + this.location.getValue() + "\n" +
                 "Position Type: " + this.positionType.getValue() + "\n" +
-                "Core Competency: " + this.coreCompetency.getValue() + "\n" +
-                "\n";
+                "Core Competency: " + this.coreCompetency.getValue() + "\n";
 
         return thisString;
     }
