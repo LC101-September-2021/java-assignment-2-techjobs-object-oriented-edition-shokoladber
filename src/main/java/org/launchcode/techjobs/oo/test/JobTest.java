@@ -86,12 +86,6 @@ public class JobTest {
         assertEquals(lines.length, 7);
     }
 
-    //ToDO
-//    @Test
-//    public void testToStringCreatesLabelAndDataForFields(){
-//        //createTestHere
-//    }
-
     @Test
     public void testToStringFieldsReturnDataNotAvailable(){
         assertEquals("Data not available", emptyJob.getName());
@@ -107,7 +101,7 @@ public class JobTest {
     }
 
     @Test
-    public void testToString(){
+    public void testToStringCreatesLabelAndDataForFields(){
         String expected = "\n" +
                 "ID: " + test_job1.getId() + "\n" +
                 "Name: " + test_job1.getName() + "\n" +
